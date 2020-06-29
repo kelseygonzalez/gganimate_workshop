@@ -1,8 +1,8 @@
 ---
-title: 'gganimate: A Lesson with Avocados'
+title: "Untitled"
 author: "Kelsey Gonzalez"
-date: "5/24/2020"
-output: pdf
+date: "5/25/2020"
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
@@ -12,7 +12,6 @@ knitr::opts_chunk$set(echo = TRUE,
                       message = FALSE,
                       warning = FALSE)
 ```
-
 
 Animating your ggplots may sound daunting. However, you have to add a line or two extra of code and you have an animation! `gganimate` makes animation quite accessible for users of ggplot. 
 
@@ -38,7 +37,7 @@ A cheat sheet for what we'll cover today:
 
 ---
 
-Let's load back up our data from the previous lessons on R by Adriana Picoral (picoral.github.io/resbaz_intro_to_r/parti.html) and from Kathryn Busby on ggplot2. I'll name the dataframe `avocado` because I can't remember what the other instructors named their data. We will also load our packages here. 
+Let's load back up our data from the previous lessons on R by Adriana Picoral and from Kathryn Busby on ggplot2. I'll name the dataframe `avocado` because I can't remember what the other instructors named their data. We will also load our packages here. 
 
 ```{r}
 library(tidyverse)
@@ -82,7 +81,8 @@ avocado_us <- avocado %>% filter(region == "TotalUS")
 states <- c("California")
 avocado_CA <- avocado %>% filter(region %in% states)
 
-regions <- c("West","Southeast","SouthCentral","Plains","Northeast","Midsouth","GreatLakes","WestTexNewMexico","NorthernNewEngland")
+regions <- c("West","Southeast","SouthCentral","Plains","Northeast","Midsouth",
+             "GreatLakes","WestTexNewMexico","NorthernNewEngland")
 avocado_region <- avocado %>% filter(region %in% regions)
 
 avocado_cities <- avocado %>% filter(!region %in% c("TotalUS", states, regions))
@@ -137,7 +137,6 @@ Let's also save this, since each time we run the code it takes some time.
 anim_save(filename = "type_reveal.gif")
 ```
 
-![](type_reveal.gif)
 
 ### Challenge
 Take a few minutes to try and plot the changes in total volume of organic avocados across time for the different regions of the USA.
@@ -212,7 +211,6 @@ Let's also save this, since each time we run the code it takes some time.
 anim_save(filename = "type_time.gif")
 ```
 
-![](type_time.gif)
 
 
 
@@ -268,7 +266,6 @@ Let's also save this, since each time we run the code it takes some time.
 anim_save(filename = "type_state.gif")
 ```
 
-![](type_state.gif)
 
 
 
@@ -292,7 +289,6 @@ ggplot(data = filter(avocado_region, type == "organic"),
 anim_save("challenge_1.gif")
 ```
 
-![](challenge_1.gif)
 
 
 Challenge 2: Can you use transition_time to show how the price of organic avocados change over time for California? 
@@ -313,5 +309,3 @@ ggplot(data = filter(avocado_CA, type == "organic"),
 anim_save("challenge_2.gif")
 ```
 
-
-![](challenge_2.gif)
